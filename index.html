@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Default Prediction</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #2c3e50;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        header {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        nav {
+            padding: 10px;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        #home, #about {
+            display: none;
+        }
+        section {
+            padding: 40px 20px;
+            text-align: center;
+            transition: opacity 0.5s ease;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s;
+        }
+        .container:hover {
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: 500;
+        }
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .form-group {
+            flex: 1 1 calc(50% - 20px); /* Two columns */
+            margin: 0; 
+            box-sizing: border-box
+        }
+        label {
+            margin-bottom: 5px;
+            display: block;
+            color: #7f8c8d;
+        }
+        input[type="number"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box; /* Prevents padding/border from affecting total width */
+            margin: 0;
+        }
+        input[type="number"]:focus, select:focus {
+            border-color: #2980b9;
+        }
+        
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        button:hover {
+            background-color: #1f639b;
+            transform: translateY(-2px);
+        }
+        .message {
+            color: #27ae60;
+            text-align: center;
+            margin-top: 10px;
+        }
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                margin: 10px;
+                padding: 10px;
+            }
+            h1 {
+                font-size: 1.8em;
+            }
+            button {
+                font-size: 14px;
+            }
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        @media (max-width: 600px) {
+            .form-group {
+                flex: 1 1 100%;
+            }
+        }
+        
+        .overview, .features, .how-it-works, .cta {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .features ul li {
+            margin: 10px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .features ul li i {
+            color: #2980b9;
+            font-size: 20px;
+        }
+        
+        .how-it-works ol {
+            padding-left: 20px;
+        }
+        
+        .how-it-works ol li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+        
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, #2a5298, #1e3c72);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #1f639b;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .cta-button:hover {
+            background-color: #2980b9;
+            transform: translateY(-2px);
+        }
+        #about {
+            padding: 40px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: left;
+        }
+        
+        #about h2, #about h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+        
+        #about p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        #about ul {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+        
+        #about ul li {
+            margin: 10px 0;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        #about ul li i {
+            color: #1f639b;
+            font-size: 20px;
+        }
+        
+        .offer, .vision, .commitment {
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>House Credit Default Prediction</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#loanPredictionForm">House Credit Default Prediction</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>Welcome to House Credit Default Prediction</h2>
+        <p>Empowering Financial Decisions Through Data-Driven Insights!</p>
+    
+        <!-- Overview -->
+        <div class="overview">
+            <h3>Overview</h3>
+            <p>
+                Our advanced tool helps predict the likelihood of loan defaults, providing insightful financial data.
+                Whether you're a financial institution, a small business, or an individual, gain valuable insights to make informed decisions.
+            </p>
+        </div>
+    
+        <!-- Key Features -->
+        <div class="features">
+            <h3>Key Features</h3>
+            <ul>
+                <li><i class="fas fa-chart-line"></i> Accurate Predictions using Machine Learning</li>
+                <li><i class="fas fa-cogs"></i> Customizable Inputs for Tailored Analysis</li>
+                <li><i class="fas fa-clock"></i> Real-Time Insights Delivered Instantly</li>
+                <li><i class="fas fa-lock"></i> Secure and Confidential Data Handling</li>
+            </ul>
+        </div>
+    
+        <!-- How It Works -->
+        <div class="how-it-works">
+            <h3>How It Works</h3>
+            <p>Getting started is easy! Follow these simple steps:</p>
+            <ol>
+                <li>Enter your financial details in the prediction form.</li>
+                <li>Click "Predict" to analyze the data.</li>
+                <li>Receive a credit score and loan default prediction instantly.</li>
+            </ol>
+        </div>
+    
+        <!-- Call to Action -->
+        <div class="cta">
+            <p>Ready to assess your financial health?</p>
+            <a href="#loanPredictionForm" class="cta-button">Get Started Now</a>
+        </div>
+    </section>
+    <section id="about">
+        <h2>About Us</h2>
+    
+        <!-- Mission Statement -->
+        <div class="mission">
+            <p>
+                We are a team passionate about empowering better financial decision-making through cutting-edge technology and machine learning. Our mission is to simplify risk assessment and enhance trust in financial decisions.
+            </p>
+        </div>
+    
+        <!-- What We Offer -->
+        <div class="offer">
+            <h3>What We Offer</h3>
+            <ul>
+                <li><i class="fas fa-brain"></i> Advanced Machine Learning Models</li>
+                <li><i class="fas fa-bar-chart"></i> Comprehensive Financial Insights</li>
+                <li><i class="fas fa-shield-alt"></i> Commitment to Data Privacy and Security</li>
+                <li><i class="fas fa-user-check"></i> Intuitive and User-Friendly Interface</li>
+            </ul>
+        </div>
+    
+        <!-- Vision & Values -->
+        <div class="vision">
+            <h3>Our Vision</h3>
+            <p>
+                To revolutionize the financial landscape by making predictive analytics accessible and actionable for everyone, from individuals to large institutions.
+            </p>
+        </div>
+    
+        <!-- Team Commitment -->
+        <div class="commitment">
+            <h3>Why Choose Us?</h3>
+            <p>
+                Our dedicated team of financial analysts, data scientists, and developers work tirelessly to ensure accurate, reliable, and secure predictions tailored to your needs.
+            </p>
+        </div>
+    </section>
+    <header>
+        <h1>House Credit Default Prediction</h1>
+    </header>
+    <div class="container">
+        <form id="loanPredictionForm" onsubmit="submitPrediction(event)">
+            <label for="AMT_INCOME_TOTAL">Total Income</label>
+            <input type="number" id="AMT_INCOME_TOTAL" name="AMT_INCOME_TOTAL"  value="{{ request.form['AMT_INCOME_TOTAL'] if request.form['AMT_INCOME_TOTAL'] else '' }}" required>
+            <label for="AMT_CREDIT">Credit Amount</label>
+            <input type="number" id="AMT_CREDIT" name="AMT_CREDIT"  value="{{ request.form['AMT_CREDIT'] if request.form['AMT_CREDIT'] else '' }}" required>
+            <label for="AMT_BALANCE">Total Balance</label>
+            <input type="number" id="AMT_BALANCE" name="AMT_BALANCE"  value="{{ request.form['AMT_BALANCE'] if request.form['AMT_BALANCE'] else '' }}" required>
+            <label for="AMT_ANNUITY">Annuity Amount</label>
+            <input type="number" id="AMT_ANNUITY" name="AMT_ANNUITY"  value="{{ request.form['AMT_ANNUITY'] if request.form['AMT_ANNUITY'] else '' }}" required>
+            <label for="SK_DPD">Days Past Due</label>
+            <input type="number" id="SK_DPD" name="SK_DPD"  value="{{ request.form['SK_DPD'] if request.form['SK_DPD'] else '' }}" required>
+            <label for="CNT_CHILDREN">Number of Children</label>
+            <input type="number" id="CNT_CHILDREN" name="CNT_CHILDREN"  value="{{ CNT_CHILDREN}}" required>
+            <label for="NAME_FAMILY_STATUS">Family Status</label>
+            <select id="NAME_FAMILY_STATUS" name="NAME_FAMILY_STATUS"  value="{{ request.form['NAME_FAMILY_STATUS'] if request.form['NAME_FAMILY_STATUS'] else '' }}" required>
+                <option value="">Select...</option>
+                <option value="Civil marriage" {% if request.form['NAME_FAMILY_STATUS'] == 'Civil marriage' %}selected{% endif %}>Civil marriage</option>
+                <option value="Married" {% if request.form['NAME_FAMILY_STATUS'] == 'Married' %}selected{% endif %}>Married</option>
+                <option value="Separated" {% if request.form['NAME_FAMILY_STATUS'] == 'Separated' %}selected{% endif %}>Separated</option>
+                <option value="Single/not married"{% if request.form['NAME_FAMILY_STATUS'] == 'Single/not married' %}selected{% endif %}>Single</option>
+                <option value="Widow" {% if request.form['NAME_FAMILY_STATUS'] == 'Widow' %}selected{% endif %}>Widow</option>
+            </select>
+            <label for="NAME_INCOME_TYPE">Income Type</label>
+            <select id="NAME_INCOME_TYPE" name="NAME_INCOME_TYPE" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+                <option value="">Select...</option>
+                <option value="Businessman" {% if request.form['NAME_INCOME_TYPE'] == 'Businessman' %}selected{% endif %}>Businessman</option>
+                <option value="Commercial associate" {% if request.form['NAME_INCOME_TYPE'] == 'Commercial associate' %}selected{% endif %}>Commercial associate</option>
+                <option value="Pensioner" {% if request.form['NAME_INCOME_TYPE'] == 'Pensioner' %}selected{% endif %}>Pensioner</option>
+                <option value="State servant" {% if request.form['NAME_INCOME_TYPE'] == 'State servant' %}selected{% endif %}>State servant</option>
+                <option value="Student" {% if request.form['NAME_INCOME_TYPE'] == 'Student' %}selected{% endif %}>Student</option>
+                <option value="Unemployed" {% if request.form['NAME_INCOME_TYPE'] == 'Unemployed' %}selected{% endif %}>Unemployed</option>
+                <option value="Working" {% if request.form['NAME_INCOME_TYPE'] == 'Working' %}selected{% endif %}>Working</option>
+            </select>
+            <label for="NAME_HOUSING_TYPE">Housing Type</label>
+            <select id="NAME_HOUSING_TYPE" name="NAME_HOUSING_TYPE" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+                <option value="">Select...</option>
+                <option value="Co-op apartment" {% if request.form['NAME_HOUSING_TYPE'] == 'Co-op apartment' %}selected{% endif %}>Co-op apartment</option>
+                <option value="House / apartment" {% if request.form['NAME_HOUSING_TYPE'] == 'House / apartment' %}selected{% endif %}>House / apartment</option>
+                <option value="Municipal apartment" {% if request.form['NAME_HOUSING_TYPE'] == 'Municipal apartment' %}selected{% endif %}>Municipal apartment</option>
+                <option value="Office apartment" {% if request.form['NAME_HOUSING_TYPE'] == 'Office apartment' %}selected{% endif %}>Office apartment</option>
+                <option value="Rented apartment" {% if request.form['NAME_HOUSING_TYPE'] == 'Rented apartment' %}selected{% endif %}>Rented apartment</option>
+                <option value="With parents" {% if request.form['NAME_HOUSING_TYPE'] == 'With parents' %}selected{% endif %}>With parents</option>
+            </select>
+            <label for="FLAG_OWN_CAR">Own Car?</label>
+            <select id="FLAG_OWN_CAR" name="FLAG_OWN_CAR" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+                <option value="">Select...</option>
+                <option value="Y" {% if request.form['FLAG_OWN_CAR'] == 'Y' %}selected{% endif %}>Y</option>
+                <option value="N" {% if request.form['FLAG_OWN_CAR'] == 'N' %}selected{% endif %}>N</option>
+            </select>
+            <label for="CODE_GENDER">Gender</label>
+            <select id="CODE_GENDER" name="CODE_GENDER" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+                <option value="">Select...</option>
+                <option value="F" {% if request.form['CODE_GENDER'] == 'F' %}selected{% endif %}>F</option>
+                <option value="M" {% if request.form['CODE_GENDER'] == 'M' %}selected{% endif %}>M</option>
+            </select>
+            <label for="NAME_CONTRACT_TYPE">Contract Type</label>
+            <select id="NAME_CONTRACT_TYPE" name="NAME_CONTRACT_TYPE" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+                <option value="">Select...</option>
+                <option value="Cash loans" {% if request.form['NAME_CONTRACT_TYPE'] == 'Cash loans' %}selected{% endif %}>Cash loans</option>
+                <option value="Revolving loans" {% if request.form['NAME_CONTRACT_TYPE'] == 'Revolving loans' %}selected{% endif %}>Revolving loans</option>
+            </select>
+            <label for="DAYS_CREDIT">Days credit</label>
+            <input type="number" id="DAYS_CREDIT" name="DAYS_CREDIT" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+            <label for="DAYS_DECISION">Days decision</label>
+            <input type="number" id="DAYS_DECISION" name="DAYS_DECISION" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+            <label for="AMT_PAYMENT">Payment Amount</label>
+            <input type="number" id="AMT_PAYMENT" name="AMT_PAYMENT" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+            <label for="AMT_INSTALMENT">Instalment Amount</label>
+            <input type="number" id="AMT_INSTALMENT" name="AMT_INSTALMENT" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+            <label for="AMT_APPLICATION">Application Amount</label>
+            <input type="number" id="AMT_APPLICATION" name="AMT_APPLICATION" value="{{ request.form['Crop'] if request.form['Crop'] else '' }}" required>
+            <button type="submit">Predict</button>
+        </form>
+        <h3>Prediction Results</h3>
+        <p id="creditScore">Credit Score: </p>
+        <p id="ficoRange">FICO Range: </p>
+        <p id="predictionResult">Prediction Result: </p>
+    </div>
+    <script>
+        // Handle navigation to show/hide sections dynamically
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(event) {
+                event.preventDefault();
+                const targetSection = document.querySelector(this.getAttribute('href'));
+                
+                // Hide all sections
+                document.querySelectorAll('section').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show the target section
+                targetSection.style.display = 'block';
+        
+                // Reset the prediction results container visibility if navigating to Loan Prediction
+                if (targetSection.id === "loanPredictionForm") {
+                    document.getElementById("predictionResultsContainer").style.display = "none";
+                }
+            });
+        });
+
+        
+        function submitPrediction(event) {
+            event.preventDefault();
+
+            let formData = new FormData(document.getElementById("loanPredictionForm"));
+            fetch('/predict', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById("predictionResult").textContent = "Error: " + data.error;
+                } else {
+                    document.getElementById("predictionResult").textContent = "Prediction: " + data.prediction;
+                    document.getElementById("creditScore").textContent = "Credit Score: " + data.creditScore;
+                    document.getElementById("ficoRange").textContent = "FICO Range: " + data.ficoRange;
+                }
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>
