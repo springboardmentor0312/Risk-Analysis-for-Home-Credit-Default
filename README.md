@@ -70,7 +70,7 @@ To run this project locally, follow these steps:
 
 ## Team Members
 
--**S. Chaitanya Deepthi**: EDA and data cleaning.
--**Sk. Shakila**: Model training and optimization.
--**Smruti Deshpande**: Backend development and deployment.
--**C. Sahi**: Frontend development and user interface.
+- **S. Chaitanya Deepthi**: EDA and data cleaning.
+- **Sk. Shakila**: Model training and optimization.
+- **Smruti Deshpande**: Backend development and deployment.
+- **C. Sahi**: Frontend development and user interface.
