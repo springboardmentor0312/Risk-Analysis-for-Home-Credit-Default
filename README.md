@@ -68,7 +68,7 @@ To run this project locally, follow these steps:
 4. **Access the application**:
    -Open your web browser and go to https://house-credit-default-infosys-6.onrender.com/
 
-##Team Members
+## Team Members
 
 -**S. Chaitanya Deepthi**: EDA and data cleaning.
 -**Sk. Shakila**: Model training and optimization.
