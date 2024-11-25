@@ -1,0 +1,76 @@
+body {
+    background: linear-gradient(to bottom, #0052a2, #007ac1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+.container {
+    max-width: 900px; /* Wider form */
+    margin: auto;
+}
+
+
+.form-container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+h2 {
+    font-weight: 600;
+    color: #0052a2;
+    align-items: center;
+}
+
+.btn-primary {
+    background-color: #0052a2;
+    border-color: #0052a2;
+    font-weight: bold;
+}
+
+.btn-primary:hover {
+    background-color: #003a75;
+    border-color: #003a75;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #555;
+}
+
+.form-logo {
+    width: 70px; /* Adjust logo size */
+    margin-right: 10px; /* Space between logo and title */
+}
+
+.form-title {
+    font-size: 24px;
+    color: black;
+    font-weight: bold;
+    margin: 0;
+    position: relative;
+    top: -55px; /* Adjust to align with logo if needed */
+}
+
+/* Add padding and alignment for checkboxes and radio buttons */
+input[type="checkbox"], input[type="radio"] {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Adjust form container for spacing and alignment */
+.form-container .row {
+    margin-bottom: 15px;
+}
+
+.logo-title-container {
+    display: flex;
+    align-items: center; /* Align logo and title vertically */
+    margin-bottom: 20px; /* Space below logo-title container and form inputs */
+}
+
+
+
+
