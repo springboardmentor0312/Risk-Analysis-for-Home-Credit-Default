@@ -31,24 +31,26 @@ Ensure the following are installed on your system:
 6. Imbalanced-learn
 7. HTML/CSS for frontend design
 
+---
 
-How to Run
+## How to Run
 
-1. Setup the Environment
+### 1. Setup the Environment
 Navigate to the project folder:
 cd application/
 Install the required Python packages:
+
 pip install -r requirements.txt
 
-2. Start the Application
+### 2. Start the Application
 Run the Flask application:
 python app.py
 The terminal will display a server link similar to:
 * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 
-3. Access the Frontend
-Click the server link shown in the terminal or open it in your browser.
-Enter the required loan details and submit the form to view the prediction results.
+### 3. Access the Frontend
+-Click the server link shown in the terminal or open it in your browser.
+-Enter the required loan details and submit the form to view the prediction results.
 
 
 
