@@ -46,7 +46,7 @@ Ensure the following are installed on your system:
 - Run the Flask application:
   ```bash
   python app.py
-  The terminal will display a server link similar to:
+- The terminal will display a server link similar to:
   ```bash
   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 3.**Access the Frontend** :
