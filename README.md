@@ -39,7 +39,8 @@ Ensure the following are installed on your system:
 - Navigate to the project folder:
   ```bash
   cd application/
-  Install the required Python packages:
+- Install the required Python packages:
+  ```bash
   pip install -r requirements.txt
 
 
