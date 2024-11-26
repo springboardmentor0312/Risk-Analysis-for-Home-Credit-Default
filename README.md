@@ -35,8 +35,8 @@ Ensure the following are installed on your system:
 
 ## How to Run
 
- 1.**Setup the Environment** :
-Navigate to the project folder:
+ 1. **Setup the Environment** :
+  Navigate to the project folder:
   ```bash
   cd application/
     Install the required Python packages:
