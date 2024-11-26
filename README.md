@@ -35,12 +35,7 @@ To install dependencies, use:
 ```bash
 pip install -r requirements.txt
 
-## How to Run
 
-### 1. Setup the Environment
-Navigate to the project folder:
-```bash
-cd application/
 
 
 
