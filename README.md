@@ -14,7 +14,7 @@ This application predicts the likelihood of loan default using an XGBoost machin
  2.**Frontend**
 - Provides a user-friendly interface to input loan details and view predictions.
 
- 3.** Backend**
+ 3.**Backend**
 - Built with Flask, handles data preprocessing and API integration.
 
 ---
@@ -36,7 +36,7 @@ Ensure the following are installed on your system:
 ## How to Run
 
  1. **Setup the Environment** :
-    Navigate to the project folder:
+-Navigate to the project folder:
   ```bash
   cd application/
   Install the required Python packages:
