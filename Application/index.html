@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loan Default Prediction</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Loan Default Prediction</h1>
+      <form id="predictionForm">
+        <!-- Form fields for each input -->
+
+        <label>Customer Id:</label>
+        <input type="number" name="customer_id" required />
+
+        <label>Customer Age:</label>
+        <input type="number" name="customer_age" required />
+
+        <label>Customer Income:</label>
+        <input type="number" name="customer_income" required />
+
+        <label>Home Ownership:</label>
+        <select name="home_ownership">
+          <option value="OWN">Own</option>
+          <option value="RENT">Rent</option>
+          <option value="MORTGAGE">Mortgage</option>
+        </select>
+
+        <label>Employment Duration (in years):</label>
+        <input type="number" name="employment_duration" required />
+
+        <label>Loan Intent:</label>
+        <input type="text" name="loan_intent" required />
+
+        <label>Loan Grade:</label>
+        <select name="loan_grade">
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+          <option value="E">E</option>
+          <option value="F">F</option>
+        </select>
+
+        <label>Loan Amount:</label>
+        <input type="number" name="loan_amnt" required />
+
+        <label>Loan Interest Rate (%):</label>
+        <input type="number" step="0.01" name="loan_int_rate" required />
+
+        <label>Loan Term (years):</label>
+        <input type="number" name="term_years" required />
+
+        <label>Historical Default:</label>
+        <select name="historical_default">
+          <option value="N">No</option>
+          <option value="Y">Yes</option>
+        </select>
+
+        <label>Credit History Length (years):</label>
+        <input type="number" name="cred_hist_length" required />
+
+        <button type="button" onclick="getPrediction()">Submit</button>
+      </form>
+
+      <div id="result"></div>
+    </div>
+
+    <script>
+      function getPrediction() {
+        const form = document.getElementById("predictionForm");
+        const formData = new FormData(form);
+
+        fetch("/predict", {
+          method: "POST",
+          body: formData,
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            document.getElementById("result").innerHTML = `
+                    <h3>Prediction Result:</h3>
+                    <p><strong>Prediction:</strong> ${data.prediction}</p>
+                    <p><strong>Credit Score:</strong> ${data.credit_score}</p>
+                    <p><strong>Credit Category:</strong> ${data.credit_category}</p>
+                `;
+          })
+          .catch((error) => {
+            document.getElementById("result").innerHTML =
+              "<p>Error fetching the prediction.</p>";
+          });
+      }
+    </script>
+  </body>
+</html>
