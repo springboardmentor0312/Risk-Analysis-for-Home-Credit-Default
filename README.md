@@ -3,4 +3,36 @@
 This application predicts the likelihood of loan default using an XGBoost machine learning model. It includes a Flask backend, a web-based frontend, and a robust pipeline for preprocessing and modeling.
 
 
+---
+
+## Features
+
+### 1. Machine Learning
+- Uses an XGBoost model for predictions.
+- Encodes categorical data and balances classes using SMOTE.
+
+### 2. Frontend
+- Provides a user-friendly interface to input loan details and view predictions.
+
+### 3. Backend
+- Built with Flask, handles data preprocessing and API integration.
+
+---
+
+## Requirements
+
+Ensure the following are installed on your system:
+
+1. Python 3.12.4 (or compatible version)
+2. Flask
+3. XGBoost
+4. Pandas
+5. Scikit-learn
+6. Imbalanced-learn
+7. HTML/CSS for frontend design
+
+To install dependencies, use:
+```bash
+pip install -r requirements.txt
+
 
