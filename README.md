@@ -41,19 +41,7 @@ pip install -r requirements.txt
    Navigate to the project folder:  
    ```bash
    cd application/
-   Install the required Python packages:
-   ```bash
-   pip install -r requirements.txt
-2. **Start the Application**
-   Run the Flask application:
-   ```bash
-   python app.py
-   The terminal will display a server link similar to:
-   * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
-   
-3.**3. Access the Frontend**
- Click the server link shown in the terminal or open it in your browser.
- Enter the required loan details and submit the form to view the prediction results.
+
 
 
 
