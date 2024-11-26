@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Check Your Credit Score</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a4e69;
+            --secondary-color: #9a8c98;
+            --text-color: #22223b;
+            --background-color: #f2e9e4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4a4e69 0%, #9a8c98 100%);
+            color: var(--text-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .page-title {
+            color: white;
+            font-size: 36px;
+            margin-bottom: 25px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .page-title i {
+            color: #f2e9e4;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 450px;
+            padding: 30px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+        }
+
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: var(--text-color);
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #c9ada7;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(74, 78, 105, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--secondary-color);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 28px;
+            }
+            .container {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-title">
+        <i class="fas fa-credit-card"></i>
+        Check Your Score
+    </div>
+
+    <div class="container">
+        <h2>Credit Risk Assessment</h2>
+
+        <form id="creditForm">
+            <div class="form-group">
+                <label for="customer_id">Customer ID:</label>
+                <input type="text" id="customer_id" name="customer_id" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Customer Age:</label>
+                <input type="number" id="age" min="18" required>
+            </div>
+
+            <div class="form-group">
+                <label for="income">Customer Income:</label>
+                <input type="number" id="income" required>
+            </div>
+
+            <div class="form-group">
+                <label for="home_ownership">Home Ownership:</label>
+                <select id="home_ownership">
+                    <option value="OWN">Own</option>
+                    <option value="RENT">Rent</option>
+                    <option value="MORTGAGE">Mortgage</option>
+                    <option value="OTHER">Other</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="employment_duration">Employment Duration (years):</label>
+                <input type="number" id="employment_duration" min="0" required>
+            </div>
+
+            <div class="form-group">
+                <label for="loan_intent">Loan Intent:</label>
+                <select id="loan_intent">
+                    <option value="PERSONAL">Personal</option>
+                    <option value="EDUCATION">Education</option>
+                    <option value="MEDICAL">Medical</option>
+                    <option value="DEBT_CONSOLIDATION">Debt Consolidation</option>
+                    <option value="HOME_IMPROVEMENT">Home Improvement</option>
+                    <option value="VENTURE">Venture</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="loan_grade">Loan Grade:</label>
+                <select id="loan_grade">
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                    <option value="G">G</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="loan_amount">Loan Amount:</label>
+                <input type="number" id="loan_amount" required>
+            </div>
+
+            <div class="form-group">
+                <label for="interest_rate">Loan Interest Rate (%):</label>
+                <input type="number" id="interest_rate" step="0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="term">Term (months):</label>
+                <input type="number" id="term" required>
+            </div>
+
+            <div class="form-group">
+                <label for="historical_default">Historical Default:</label>
+                <select id="historical_default">
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="credit_history_length">Credit History Length (years):</label>
+                <input type="number" id="credit_history_length" required>
+            </div>
+
+            <button type="button" class="submit-btn" onclick="submitForm()">Calculate My Credit Score</button>
+        </form>
+
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function submitForm() {
+            const data = {
+                customer_id: document.getElementById('customer_id').value,
+                age: parseInt(document.getElementById('age').value),
+                income: parseFloat(document.getElementById('income').value),
+                home_ownership: document.getElementById('home_ownership').value,
+                employment_duration: parseInt(document.getElementById('employment_duration').value),
+                loan_intent: document.getElementById('loan_intent').value,
+                loan_grade: document.getElementById('loan_grade').value,
+                loan_amount: parseFloat(document.getElementById('loan_amount').value),
+                interest_rate: parseFloat(document.getElementById('interest_rate').value),
+                term: parseInt(document.getElementById('term').value),
+                historical_default: parseInt(document.getElementById('historical_default').value),
+                credit_history_length: parseInt(document.getElementById('credit_history_length').value)
+            };
+    
+            fetch('http://127.0.0.1:5000/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                const resultDiv = document.getElementById('result');
+                if (result.error) {
+                    resultDiv.innerHTML = `<p style="color: #c41e3a;">Error: ${result.error}</p>`;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div style="background-color: rgba(74, 78, 105, 0.1); padding: 15px; border-radius: 8px; border: 1px solid #4a4e69;">
+                            <p><strong>Risk Prediction:</strong> ${result.prediction}</p>
+                            <p><strong>Credit Score:</strong> ${result.credit_score}</p>
+                            <p><strong>Credit Category:</strong> ${result.credit_category}</p>
+                        </div>
+                    `;
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('result').innerHTML = 
+                    '<p style="color: #c41e3a;">An error occurred while processing your request.</p>';
+            });
+        }
+    </script>    
+</body>
+</html>
