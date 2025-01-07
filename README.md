@@ -4,7 +4,7 @@
 
 This project focuses on predicting the likelihood of default on home loans using machine learning techniques. By analyzing real-world borrower data, we aim to help financial institutions reduce risk and improve their lending decisions.
 
-## Application Video:- https://drive.google.com/file/d/1CRb-r3h8LfoNuHg6wfmJtmieabagI00o/view?usp=sharing
+## Application Video:- https://drive.google.com/file/d/1d1S2zadEBG2kt3fbSC2eUkF75XOEKG1z/view?usp=sharing
 
 ## Project Goals
 
